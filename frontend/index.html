@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Agent Task Registry</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <div class="logo-icon">✦</div>
+
+            <div>
+                <h2>Agent Registry</h2>
+                <p>DSA Project</p>
+            </div>
+
+        </div>
+
+
+        <nav>
+
+            <button class="nav-item active"
+                    onclick="showPage('dashboard')">
+
+                <span>⌂</span>
+                Dashboard
+
+            </button>
+
+
+            <button class="nav-item"
+                    onclick="showPage('agents')">
+
+                <span>◈</span>
+                AI Agents
+
+            </button>
+
+
+            <button class="nav-item"
+                    onclick="showPage('categories')">
+
+                <span>◇</span>
+                Categories
+
+            </button>
+
+
+            <button class="nav-item"
+                    onclick="showPage('hashing')">
+
+                <span>#</span>
+                Hash Table
+
+            </button>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <p>Data Structures</p>
+
+            <div class="structure">
+                <span class="dot tree"></span>
+                Binary Search Tree
+            </div>
+
+            <div class="structure">
+                <span class="dot hash"></span>
+                Separate Chaining
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+
+    <main class="main">
+
+        <header>
+
+            <div>
+
+                <p class="small-title">
+                    AI AGENT MANAGEMENT
+                </p>
+
+                <h1 id="pageTitle">
+                    Dashboard
+                </h1>
+
+            </div>
+
+        </header>
+
+
+        <!-- DASHBOARD -->
+
+        <section id="dashboard"
+                 class="page active-page">
+
+            <div class="welcome">
+
+                <div>
+
+                    <p class="small-title">
+                        WELCOME
+                    </p>
+
+                    <h2>
+                        Manage your AI agents
+                        <span>efficiently.</span>
+                    </h2>
+
+                    <p>
+                        A data-structure based registry using
+                        Binary Search Tree and Hashing.
+                    </p>
+
+                </div>
+
+
+                <div class="welcome-icon">
+                    ✦
+                </div>
+
+            </div>
+
+
+            <div class="stats">
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        ◈
+                    </div>
+
+                    <div>
+                        <p>Total Agents</p>
+                        <h2 id="totalAgents">4</h2>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        ✓
+                    </div>
+
+                    <div>
+                        <p>Active Agents</p>
+                        <h2 id="activeAgents">3</h2>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        ◇
+                    </div>
+
+                    <div>
+                        <p>Categories</p>
+                        <h2 id="totalCategories">5</h2>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        #
+                    </div>
+
+                    <div>
+                        <p>Hash Buckets</p>
+                        <h2>10</h2>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="section-heading">
+
+                <div>
+
+                    <h2>
+                        System Overview
+                    </h2>
+
+                    <p>
+                        How the data structures organize your AI agents.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="overview">
+
+                <div class="overview-card">
+
+                    <div class="overview-icon tree-icon">
+                        ◇
+                    </div>
+
+                    <h3>
+                        Binary Search Tree
+                    </h3>
+
+                    <p>
+                        Organizes AI agent categories and supports
+                        efficient searching.
+                    </p>
+
+                    <button onclick="showPage('categories')">
+                        View Categories →
+                    </button>
+
+                </div>
+
+
+                <div class="overview-card">
+
+                    <div class="overview-icon hash-icon">
+                        #
+                    </div>
+
+                    <h3>
+                        Hash Table
+                    </h3>
+
+                    <p>
+                        Stores agents using their unique Agent ID
+                        with separate chaining for collisions.
+                    </p>
+
+                    <button onclick="showPage('hashing')">
+                        View Hash Table →
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- AGENTS -->
+
+        <section id="agents"
+                 class="page">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <h2>AI Agents</h2>
+
+                    <p>
+                        Manage registered AI agents.
+                    </p>
+
+                </div>
+
+
+                <button class="primary-button"
+                        onclick="openAddAgent()">
+
+                    + Add Agent
+
+                </button>
+
+            </div>
+
+
+            <div class="search-box">
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search agent by ID or name..."
+                    onkeyup="searchAgents()"
+                >
+
+                <span>⌕</span>
+
+            </div>
+
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>ID</th>
+                            <th>Agent</th>
+                            <th>Purpose</th>
+                            <th>Category</th>
+                            <th>Status</th>
+                            <th>Action</th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="agentTable">
+
+                        <tr>
+
+                            <td>101</td>
+
+                            <td>
+                                <div class="agent-name">
+
+                                    <div class="agent-avatar">
+                                        C
+                                    </div>
+
+                                    CodeAssist
+
+                                </div>
+                            </td>
+
+                            <td>
+                                Helps students write and debug code
+                            </td>
+
+                            <td>
+                                <span class="category-tag">
+                                    Coding
+                                </span>
+                            </td>
+
+                            <td>
+                                <span class="status active">
+                                    Active
+                                </span>
+                            </td>
+
+                            <td>
+                                <button class="action-button">
+                                    ⋮
+                                </button>
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>102</td>
+
+                            <td>
+                                <div class="agent-name">
+
+                                    <div class="agent-avatar">
+                                        S
+                                    </div>
+
+                                    StudyMate
+
+                                </div>
+                            </td>
+
+                            <td>
+                                Creates study plans and learning support
+                            </td>
+
+                            <td>
+                                <span class="category-tag">
+                                    Education
+                                </span>
+                            </td>
+
+                            <td>
+                                <span class="status active">
+                                    Active
+                                </span>
+                            </td>
+
+                            <td>
+                                <button class="action-button">
+                                    ⋮
+                                </button>
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>103</td>
+
+                            <td>
+                                <div class="agent-name">
+
+                                    <div class="agent-avatar">
+                                        R
+                                    </div>
+
+                                    ResearchBot
+
+                                </div>
+                            </td>
+
+                            <td>
+                                Helps with research and information gathering
+                            </td>
+
+                            <td>
+                                <span class="category-tag">
+                                    Research
+                                </span>
+                            </td>
+
+                            <td>
+                                <span class="status active">
+                                    Active
+                                </span>
+                            </td>
+
+                            <td>
+                                <button class="action-button">
+                                    ⋮
+                                </button>
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>104</td>
+
+                            <td>
+                                <div class="agent-name">
+
+                                    <div class="agent-avatar">
+                                        D
+                                    </div>
+
+                                    DataBot
+
+                                </div>
+                            </td>
+
+                            <td>
+                                Analyzes datasets and generates insights
+                            </td>
+
+                            <td>
+                                <span class="category-tag">
+                                    Data Science
+                                </span>
+                            </td>
+
+                            <td>
+                                <span class="status inactive">
+                                    Inactive
+                                </span>
+                            </td>
+
+                            <td>
+                                <button class="action-button">
+                                    ⋮
+                                </button>
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- CATEGORY BST -->
+
+        <section id="categories"
+                 class="page">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <h2>
+                        Category BST
+                    </h2>
+
+                    <p>
+                        Categories organized using a Binary Search Tree.
+                    </p>
+
+                </div>
+
+
+                <button class="primary-button"
+                        onclick="addCategory()">
+                    + Add Category
+                </button>
+
+            </div>
+
+
+            <div class="traversal-buttons">
+
+                <button class="traversal active"
+                        onclick="loadBSTTraversal('inorder')">
+                    Inorder
+                </button>
+
+                <button class="traversal"
+                        onclick="loadBSTTraversal('preorder')">
+                    Preorder
+                </button>
+
+                <button class="traversal"
+                        onclick="loadBSTTraversal('postorder')">
+                    Postorder
+                </button>
+
+            </div>
+
+
+            <div class="bst-result">
+
+                <p>
+                    BST Traversal Result
+                </p>
+
+
+                <div class="nodes">
+
+                    <span>Coding</span>
+                    <span>Data Science</span>
+                    <span>Education</span>
+                    <span>Research</span>
+                    <span>Writing</span>
+
+                </div>
+
+            </div>
+
+
+            <!-- FINAL TREE -->
+
+            <div class="tree-visual">
+
+                <h3>
+                    Category Tree
+                </h3>
+
+
+                <div class="tree-diagram">
+
+                    <!-- ROOT -->
+
+                    <div class="tree-node root-node">
+                        Education
+                    </div>
+
+
+                    <!-- ROOT VERTICAL LINE -->
+
+                    <div class="line root-line"></div>
+
+
+                    <!-- HORIZONTAL LINE -->
+
+                    <div class="line horizontal-line"></div>
+
+
+                    <!-- LEFT VERTICAL -->
+
+                    <div class="line left-line"></div>
+
+
+                    <!-- RIGHT VERTICAL -->
+
+                    <div class="line right-line"></div>
+
+
+                    <!-- CODING -->
+
+                    <div class="tree-node coding-node">
+                        Coding
+                    </div>
+
+
+                    <!-- RESEARCH -->
+
+                    <div class="tree-node research-node">
+                        Research
+                    </div>
+
+
+                    <!-- CODING TO DATA SCIENCE -->
+
+                    <div class="line coding-down"></div>
+
+
+                    <!-- RESEARCH TO WRITING -->
+
+                    <div class="line research-down"></div>
+
+
+                    <!-- DATA SCIENCE -->
+
+                    <div class="tree-node data-node">
+                        Data Science
+                    </div>
+
+
+                    <!-- WRITING -->
+
+                    <div class="tree-node writing-node">
+                        Writing
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- HASH TABLE -->
+
+        <section id="hashing"
+                 class="page">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <h2>
+                        Hash Table
+                    </h2>
+
+                    <p>
+                        Agent storage using hashing and separate chaining.
+                    </p>
+
+                </div>
+
+
+                <div class="hash-function">
+                    Hash Function:
+                    <strong>ID % 10</strong>
+                </div>
+
+            </div>
+
+
+            <div class="hash-info">
+
+                <div>
+
+                    <span class="info-label">
+                        TABLE SIZE
+                    </span>
+
+                    <strong>
+                        10
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span class="info-label">
+                        COLLISION METHOD
+                    </span>
+
+                    <strong>
+                        Separate Chaining
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span class="info-label">
+                        KEY
+                    </span>
+
+                    <strong>
+                        Agent ID
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="hash-table">
+
+                <div class="hash-header">
+
+                    <span>Bucket</span>
+                    <span>Chain</span>
+
+                </div>
+
+
+                <div class="hash-row">
+                    <span class="bucket">0</span>
+                    <span class="empty">Empty</span>
+                </div>
+
+
+                <div class="hash-row">
+
+                    <span class="bucket">1</span>
+
+                    <div class="chain">
+
+                        <span class="hash-node">101</span>
+
+                        <span class="arrow">→</span>
+
+                        <span class="empty">NULL</span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="hash-row">
+
+                    <span class="bucket">2</span>
+
+                    <div class="chain">
+
+                        <span class="hash-node">102</span>
+
+                        <span class="arrow">→</span>
+
+                        <span class="empty">NULL</span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="hash-row">
+
+                    <span class="bucket">3</span>
+
+                    <div class="chain">
+
+                        <span class="hash-node">103</span>
+
+                        <span class="arrow">→</span>
+
+                        <span class="empty">NULL</span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="hash-row">
+
+                    <span class="bucket">4</span>
+
+                    <div class="chain">
+
+                        <span class="hash-node">104</span>
+
+                        <span class="arrow">→</span>
+
+                        <span class="empty">NULL</span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="hash-row">
+                    <span class="bucket">5</span>
+                    <span class="empty">Empty</span>
+                </div>
+
+                <div class="hash-row">
+                    <span class="bucket">6</span>
+                    <span class="empty">Empty</span>
+                </div>
+
+                <div class="hash-row">
+                    <span class="bucket">7</span>
+                    <span class="empty">Empty</span>
+                </div>
+
+                <div class="hash-row">
+                    <span class="bucket">8</span>
+                    <span class="empty">Empty</span>
+                </div>
+
+                <div class="hash-row">
+                    <span class="bucket">9</span>
+                    <span class="empty">Empty</span>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ADD AGENT MODAL -->
+
+    <div id="agentModal"
+         class="modal">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <div>
+
+                    <p class="small-title">
+                        NEW ENTRY
+                    </p>
+
+                    <h2>
+                        Add AI Agent
+                    </h2>
+
+                </div>
+
+
+                <button class="close-button"
+                        onclick="closeAddAgent()">
+
+                    ×
+
+                </button>
+
+            </div>
+
+
+            <div class="form">
+
+                <label>Agent ID</label>
+
+                <input
+                    type="number"
+                    id="agentId"
+                    placeholder="Example: 105"
+                >
+
+
+                <label>Agent Name</label>
+
+                <input
+                    type="text"
+                    id="agentName"
+                    placeholder="Example: WriteBot"
+                >
+
+
+                <label>Purpose</label>
+
+                <input
+                    type="text"
+                    id="agentPurpose"
+                    placeholder="What does the agent do?"
+                >
+
+
+                <label>Category</label>
+
+                <select id="agentCategory">
+
+                    <option>Coding</option>
+                    <option>Data Science</option>
+                    <option>Education</option>
+                    <option>Research</option>
+                    <option>Writing</option>
+
+                </select>
+
+
+                <label>Status</label>
+
+                <select id="agentStatus">
+
+                    <option>Active</option>
+                    <option>Inactive</option>
+
+                </select>
+
+
+                <button class="submit-button"
+                        onclick="addAgent()">
+
+                    Add Agent
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
