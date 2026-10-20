@@ -97,6 +97,12 @@ AI-Agent-Task-Registry/
 
 The frontend connects to the local backend at `http://127.0.0.1:8080`.
 
+## Demo Video
+
+Watch the project demonstration to see the AI Agent Task Registry in action, including the dashboard, AI agent management, Binary Search Tree, and Hash Table functionalities.
+
+[Watch the Demo Video](https://youtu.be/s5x8JDjVF4g)
+
 ## Learning Outcomes
 
 - Implementing a hash table with separate chaining.
